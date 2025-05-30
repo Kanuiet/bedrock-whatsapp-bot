@@ -1,5 +1,5 @@
 /**
- * Format phone number (e.g., '@xxxxxxxxxxxxx' or '+xx xxx-xxxx-xxxx') to 'xxxxxxxxxxxxx'
+ * Formats a phone number (e.g., '@xxxxxxxxxxxxx' or '+xx xxx-xxxx-xxxx') to 'xxxxxxxxxxxxx'
  *
  * @param {string} raw
  * @returns {string} A formatted phone number without symbols and spaces.
