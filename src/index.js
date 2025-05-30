@@ -14,7 +14,7 @@ async function checkIpPort() {
       await getUserInput('Type your Minecraft server IP: ')
     ).trim();
 
-    // Check if ip is valid
+    // Check if the ip is valid
     if (
       ipInput.match(
         /^(?:(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|(?:\d{1,3}\.){3}\d{1,3})$/,
@@ -97,7 +97,7 @@ async function start() {
     startWhatsAppBot();
   } catch (err) {
     reconnect(
-      'minecraft',
+      'Minecraft',
       `An error occurred while starting the WhatsApp bot: ${err}`,
       startWhatsAppBot,
     );
@@ -107,7 +107,7 @@ async function start() {
     startMinecraftBot();
   } catch (err) {
     reconnect(
-      'minecraft',
+      'Minecraft',
       `An error occurred while starting the Minecraft bot: ${err}`,
       startMinecraftBot,
     );
