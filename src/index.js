@@ -1,9 +1,9 @@
 const { startWhatsAppBot } = require('./bots/whatsappBot.js');
 const { startMinecraftBot } = require('./bots/minecraftBot.js');
 const { getUserInput } = require('./utils/userInput.js');
+const { reconnect } = require('./utils/reconnect.js');
 const { log } = require('./utils/log.js');
 const config = require('./utils/config.js');
-const reconnect = require('./utils/reconnect.js');
 
 async function checkIpPort() {
   let ip;
