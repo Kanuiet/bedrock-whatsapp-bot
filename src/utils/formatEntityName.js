@@ -1,5 +1,5 @@
 /**
- * Formats an entity name (e.g., '%entity.zombie_villager_v2.name') to Zombie Villager
+ * Formats an entity name (e.g., '%entity.zombie_villager_v2.name') to 'Zombie Villager'.
  *
  * @param {string} raw 
  * @returns {string} A formatted entity name
