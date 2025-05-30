@@ -1,4 +1,9 @@
-// %entity.zombie_villger_v2.name -> Zombie Villager
+/**
+ * Format entity name (e.g., '%entity.zombie_villager_v2.name') to Zombie Villager
+ *
+ * @param {string} raw 
+ * @returns {string} A formatted entity name
+ */
 function formatEntityName(raw) {
   return raw 
     .replace('%entity.', '')
@@ -9,4 +14,4 @@ function formatEntityName(raw) {
     .join(' ');
 }
 
-module.exports = formatEntityName;
+module.exports = { formatEntityName };

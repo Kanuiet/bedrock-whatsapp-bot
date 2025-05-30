@@ -2,10 +2,30 @@ const commands = require('../../utils/commandLoader.js');
 const config = require('../../utils/config.js');
 
 function isOperator(fromJid, userJid, fromMe) {
-  return config.hasValue('operators', { groupJid: fromJid, userJid: userJid }) || fromMe
+  return (
+    config.hasValue('operators', { groupJid: fromJid, userJid: userJid }) ||
+    fromMe
+  );
 }
 
-async function handleMessage(sock, message, fromJid, fromMe, userJid, pushName) {
+/**
+ * Handles incoming messages from WhatsApp.
+ *
+ * @param {import('@whiskeysockets/baileys').WASocket} sock
+ * @param {string} message
+ * @param {string} fromJid - remoteJid
+ * @param {boolean} fromMe
+ * @param {string} userJid - remoteJid
+ * @param {string} pushName
+ */
+async function handleMessage(
+  sock,
+  message,
+  fromJid,
+  fromMe,
+  userJid,
+  pushName,
+) {
   if (!message.startsWith('/')) return;
 
   const reply = (text, mentionedJid = new Array()) => {
@@ -27,13 +47,19 @@ async function handleMessage(sock, message, fromJid, fromMe, userJid, pushName) 
   }
 
   try {
-    await cmd.execute({ args, fromJid, pushName, reply, commands , config, sock });
+    await cmd.execute({
+      args,
+      fromJid,
+      pushName,
+      reply,
+      commands,
+      config,
+      sock,
+    });
   } catch (err) {
     console.error(err);
     reply('An error occurred while attempting to perform the command');
   }
 }
 
-module.exports = {
-  handleMessage,
-};
+module.exports = { handleMessage };

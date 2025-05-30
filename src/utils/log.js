@@ -1,3 +1,9 @@
+/**
+ * Log output with colored text
+ *
+ * @param {string} service 
+ * @param {string} text 
+ */
 function log(service, text) {
   switch (service) {
     case 'Minecraft':

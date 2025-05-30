@@ -1,8 +1,13 @@
 const { Boom } = require('@hapi/boom');
 const { DisconnectReason } = require('@whiskeysockets/baileys');
-const { reconnect } = require('../../utils/reconnect.js');
 const { log } = require('../../utils/log.js');
+const { reconnect } = require('../../utils/reconnect.js');
 
+/**
+ * Handles the connection close from WhatsApp.
+ *
+ * @param {*} lastDisconnect 
+ */
 function handleConnectionClose(lastDisconnect) {
   const reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
   const { startWhatsAppBot } = require('../../bots/whatsappBot.js');
@@ -13,18 +18,18 @@ function handleConnectionClose(lastDisconnect) {
         'WhatsApp',
         `Invalid session detected. Please delete the folder 'auth/' and scan the QR code again.`,
       );
-      return process.exit(1);
+      return process.exit(1); // To remove warning from the biome lint.
 
     case DisconnectReason.connectionLost:
       reconnect(
-        'whatsapp',
+        'WhatsApp',
         'Lost connection to the WhatsApp server.',
         startWhatsAppBot,
       );
       break;
 
     case DisconnectReason.connectionClosed:
-      reconnect('whatsapp', 'Connection closed.', startWhatsAppBot);
+      reconnect('WhatsApp', 'Connection closed.', startWhatsAppBot);
       break;
 
     case DisconnectReason.connectionReplaced:
@@ -32,25 +37,25 @@ function handleConnectionClose(lastDisconnect) {
         'WhatsApp',
         'This session has been replaced by another connection. Please close the other session first.',
       );
-      return process.exit(1);
+      return process.exit(1); // To remove warning from the biome lint.
 
     case DisconnectReason.forbidden:
       log(
         'WhatsApp',
         `Access denied. Please delete the folder 'auth/' and scan the QR code again.`,
       );
-      return process.exit(1);
+      return process.exit(1); // To remove warning from the biome lint.
 
     case DisconnectReason.loggedOut:
       log(
         'WhatsApp',
         `You have been logged out. Please delete the folder 'auth/' and scan the QR code to log in again.`,
       );
-      return process.exit(1);
+      return process.exit(1); // To remove warning from the biome lint.
 
     case DisconnectReason.multideviceMismatch:
       reconnect(
-        'whatsapp',
+        'WhatsApp',
         'Multi-device mismatch. Please close other active sessions first.',
         startWhatsAppBot,
       );
@@ -58,7 +63,7 @@ function handleConnectionClose(lastDisconnect) {
 
     case DisconnectReason.restartRequired:
       reconnect(
-        'whatsapp',
+        'WhatsApp',
         'WhatsApp bot requires a restart.',
         startWhatsAppBot,
       );
@@ -66,10 +71,15 @@ function handleConnectionClose(lastDisconnect) {
 
     default:
       log('WhatsApp', `Disconnected due to an unknown reason (${reason}).`);
-      return process.exit(1);
+      return process.exit(1); // To remove warning from the biome lint.
   }
 }
 
+/**
+ * Handles the connection update from WhatsApp.
+ *
+ * @param {*} update 
+ */
 function handleConnectionUpdate(update) {
   const { connection, lastDisconnect, qr } = update;
 

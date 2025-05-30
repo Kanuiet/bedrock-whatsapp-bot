@@ -13,6 +13,9 @@ class Config {
     });
   }
 
+  /**
+   * Loads the config file.
+   */
   load() {
     try {
       if (!fs.existsSync(this.path)) {
@@ -27,6 +30,9 @@ class Config {
     }
   }
 
+  /**
+   * Saves the config into json file.
+   */
   save() {
     try {
       fs.writeFileSync(this.path, JSON.stringify(this.config, null, 2));
@@ -35,6 +41,12 @@ class Config {
     }
   }
 
+  /**
+   * Gets the value of the key from the config file.
+   *
+   * @param {string} key 
+   * @returns {*} The value of the key
+   */
   get(key) {
     const keys = key.split('.');
     let result = this.config;
@@ -47,6 +59,12 @@ class Config {
     return result;
   }
 
+  /**
+   * Appends a value to the array from the given key.
+   *
+   * @param {string} key 
+   * @param {*} value 
+   */
   append(key, value) {
     const keys = key.split('.');
     const lastKey = keys.pop();
@@ -67,6 +85,12 @@ class Config {
     this.save();
   }
 
+  /**
+   * Sets a value for the given key.
+   *
+   * @param {string} key 
+   * @param {*} value 
+   */
   set(key, value) {
     const keys = key.split('.');
     const lastKey = keys.pop();
@@ -83,6 +107,12 @@ class Config {
     this.save();
   }
 
+  /**
+   * Removes a value in the array from the given key.
+   *
+   * @param {string} key 
+   * @param {*} value 
+   */
   remove(key, value) {
     if (!Array.isArray(this.config[key])) return;
 
@@ -92,6 +122,13 @@ class Config {
     this.save();
   }
 
+  /**
+   * Checks the value of the array if it exists for the given key.
+   *
+   * @param {string} key 
+   * @param {*} value 
+   * @returns {boolean} `true` if the value exists, otherwise `false` 
+   */
   hasValue(key, value) {
     if (!Array.isArray(this.config[key])) return false;
 
@@ -105,6 +142,11 @@ class Config {
     );
   }
 
+  /**
+   * Gets the path to the config file.
+   * 
+   * @returns {string} The config file path
+   */
   getPath() {
     return this.path;
   }

@@ -13,6 +13,9 @@ function getClient() {
   return bedrockBot;
 }
 
+/**
+ * Starts Minecraft bot.
+ */
 function startMinecraftBot() {
   const { getWASocket } = require('../bots/whatsappBot.js');
   const { getFrom } = require('../commands/list.js');

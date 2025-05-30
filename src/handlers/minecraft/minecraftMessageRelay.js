@@ -1,8 +1,7 @@
+const { formatChatPacket, formatEventPacket } = require('./formatPacket.js');
+const { processListCommand } = require('./listCommandHandler.js');
 const { log } = require('../../utils/log.js');
 const config = require('../../utils/config.js');
-const handleChat = require('./chatHandler.js');
-const handleTranslation = require('./translationHandler.js');
-const processListCommand = require('./listCommandHandler.js');
 
 function sendLog(text) {
   const date = new Date();
@@ -17,6 +16,12 @@ function sendLog(text) {
   log('Minecraft', `when: ${formattedDate}, text: ${text}`);
 }
 
+/**
+ * Process Minecraft packet and send it to WhatsApp chat.
+ *
+ * @param {import('@whiskeysockets/baileys').WASocket} sock
+ * @param {*} packet 
+ */
 async function processChat(sock, packet) {
   const groupIds = config.get('groupIds');
   if (!groupIds?.length) return;
@@ -24,9 +29,9 @@ async function processChat(sock, packet) {
   let text = null;
 
   if (packet.type === 'translation') {
-    text = handleTranslation(packet);
+    text = formatEventPacket(packet);
   } else {
-    text = handleChat(packet);
+    text = formatChatPacket(packet);
   }
 
   if (!text) return;

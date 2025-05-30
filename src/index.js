@@ -1,9 +1,9 @@
 const { startWhatsAppBot } = require('./bots/whatsappBot.js');
 const { startMinecraftBot } = require('./bots/minecraftBot.js');
 const { getUserInput } = require('./utils/userInput.js');
+const { log } = require('./utils/log.js');
 const config = require('./utils/config.js');
 const reconnect = require('./utils/reconnect.js');
-const { log } = require('./utils/log.js');
 
 async function checkIpPort() {
   let ip;
@@ -45,7 +45,7 @@ async function checkIpPort() {
 
     if (!Number.isNaN(port) && port > 0 && port < 65536) break;
 
-    log('minecraft', 'Invalid port. Please enter a number between 1 and 65536');
+    log('Minecraft', 'Invalid port. Please enter a number between 1 and 65536');
   }
 
   config.set('bedrockServer.ip', ip);

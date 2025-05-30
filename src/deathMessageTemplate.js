@@ -1,7 +1,3 @@
-module.exports = {
-  getDeathMessage
-}
-
 function getDeathMessage(deathKey, entityName, attackerName, itemName) {
   switch (deathKey) {
     case 'death.attack.anvil':
@@ -189,3 +185,7 @@ function getDeathMessage(deathKey, entityName, attackerName, itemName) {
       return msg;
   }
 }
+
+module.exports = {
+  getDeathMessage,
+};

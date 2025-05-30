@@ -1,4 +1,11 @@
-module.exports = function processListCommand(sock, from, packet) {
+/**
+ * Formats the Minecraft command 'list' and send it to WhatsApp chat.
+ *
+ * @param {import('@whiskeysockets/baileys').WASocket} sock
+ * @param {string} from - remoteJid 
+ * @param {*} packet
+ */
+function processListCommand(sock, from, packet) {
   // playerNums = [playersOnline, playersMax]
   // playerNames = ['Steve', 'Alex', ...]
   const playerNums = packet.output[0].parameters;
@@ -14,4 +21,6 @@ module.exports = function processListCommand(sock, from, packet) {
     .join('\n');
 
   sock.sendMessage(from, { text: header + list });
-};
+}
+
+module.exports = { processListCommand }

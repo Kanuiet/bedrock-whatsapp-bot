@@ -31,6 +31,9 @@ function sendLog(remoteJid, userJid, pushName, msg, msgTimestamp) {
   );
 }
 
+/**
+ * Starts WhatsApp bot.
+ */
 async function startWhatsAppBot() {
   const { state, saveCreds } = await useMultiFileAuthState('auth');
 

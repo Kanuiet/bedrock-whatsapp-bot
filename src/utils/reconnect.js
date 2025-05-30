@@ -5,17 +5,6 @@ const isReconnecting = {
   minecraft: false,
 };
 
-function format(service) {
-  let serviceName;
-  if (service === 'minecraft') {
-    serviceName = 'Minecraft';
-  } else {
-    serviceName = 'WhatsApp';
-  }
-
-  return serviceName;
-}
-
 async function tryReconnect(service, reconnectFunction) {
   try {
     if (typeof reconnectFunction !== 'function') return;
@@ -25,13 +14,19 @@ async function tryReconnect(service, reconnectFunction) {
   }
 }
 
+/**
+ * Reconnecting Minecraft or WhatsApp bot
+ *
+ * @param {string} service 
+ * @param {string} reason 
+ * @param {botStartFunction} reconnectFunction - Either 'startWhatsAppBot' or 'startMinecraftBot'
+ */
 function reconnect(service, reason, reconnectFunction) {
   if (isReconnecting[service]) return;
-  const serviceF = format(service);
   isReconnecting[service] = true;
 
-  log(serviceF, reason);
-  log(serviceF, 'Reconnecting...');
+  log(service, reason);
+  log(service, 'Reconnecting...');
   setTimeout(async () => {
     isReconnecting[service] = false;
     await tryReconnect(service, reconnectFunction);
