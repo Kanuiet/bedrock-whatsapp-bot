@@ -5,7 +5,7 @@ A simple self-host Node.js program that connect your Minecraft bedrock server to
 You need to turn off online-mode to allow your bot join the server.
 
 ## Features
-- Send message through WhatsApp group to Minecraft (/send)
+- Send message from WhatsApp to Minecraft (/send)
 - Forward your Minecraft server chat and events (such as joined, left, and death) to WhatsApp (/forward)
 - Ping a Minecraft bedrock server (/status)
 - Show list of online players in your Minecraft Server (/list)
