@@ -1,5 +1,5 @@
 /**
- * Log output with colored text
+ * Logs output with colored text.
  *
  * @param {string} service 
  * @param {string} text 
