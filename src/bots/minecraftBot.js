@@ -50,15 +50,15 @@ function startMinecraftBot() {
   });
 
   bedrockBot.on('kick', (packet) => {
-    reconnect('minecraft', `Kicked from the server: ${packet.message}`, startMinecraftBot);
+    reconnect('Minecraft', `Kicked from the server: ${packet.message}`, startMinecraftBot);
   });
 
   bedrockBot.on('close', () => {
-    reconnect('minecraft', 'Connection closed.', startMinecraftBot);
+    reconnect('Minecraft', 'Connection closed.', startMinecraftBot);
   });
 
   bedrockBot.on('error', (error) => {
-    reconnect('minecraft', `Connection error: ${error.message}`, startMinecraftBot);
+    reconnect('Minecraft', `Connection error: ${error.message}`, startMinecraftBot);
   });
 }
 

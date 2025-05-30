@@ -97,7 +97,7 @@ async function start() {
     startWhatsAppBot();
   } catch (err) {
     reconnect(
-      'minecraft',
+      'Minecraft',
       `An error occurred while starting the WhatsApp bot: ${err}`,
       startWhatsAppBot,
     );
@@ -107,7 +107,7 @@ async function start() {
     startMinecraftBot();
   } catch (err) {
     reconnect(
-      'minecraft',
+      'Minecraft',
       `An error occurred while starting the Minecraft bot: ${err}`,
       startMinecraftBot,
     );
