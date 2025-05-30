@@ -14,7 +14,7 @@ async function checkIpPort() {
       await getUserInput('Type your Minecraft server IP: ')
     ).trim();
 
-    // Check if ip is valid
+    // Check if the ip is valid
     if (
       ipInput.match(
         /^(?:(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|(?:\d{1,3}\.){3}\d{1,3})$/,
