@@ -14,7 +14,7 @@ function getClient() {
 }
 
 /**
- * Starts Minecraft bot.
+ * Starts the Minecraft bot.
  */
 function startMinecraftBot() {
   const { getWASocket } = require('../bots/whatsappBot.js');
