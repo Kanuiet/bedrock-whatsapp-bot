@@ -2,7 +2,7 @@
 
 A simple self-host Node.js program that connect your Minecraft bedrock server to a WhatsApp group chat using the [Baileys](https://github.com/WhiskeySockets/Baileys) and [bedrock-protocol](https://github.com/PrismarineJS/bedrock-protocol) libraries.
 
-You need to turn off `online-mode` in your Minecraft Bedrock server, so your bot can join it.
+You need to turn off `online-mode` on your Minecraft Bedrock server so the bot can join it.
 
 ## Features
 - Send message from WhatsApp to Minecraft (/send)
