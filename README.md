@@ -1,31 +1,31 @@
 # bedrock-whatsapp-bot
-
-A simple self-host Node.js program that connect your Minecraft bedrock server to a WhatsApp group chat using the [Baileys](https://github.com/WhiskeySockets/Baileys) and [bedrock-protocol](https://github.com/PrismarineJS/bedrock-protocol) libraries.
-
-You need to turn off `online-mode` on your Minecraft Bedrock server so the bot can join it.
-
-## Features
-- Send message from WhatsApp to Minecraft (/send)
-- Forward your Minecraft server chat and events (such as joined, left, and death) to WhatsApp (/forward)
-- Ping a Minecraft bedrock server (/status)
-- Show list of online players in your Minecraft Server (/list)
+A simple Node.js program to bridge WhatsApp and Minecraft Bedrock server chat.
 
 ## Installation
+You must have [Node.js](https://nodejs.org/en/download) installed and set `online-mode` to `false` in the `server.properties`
 
 ``` shell
 # Clone the repository
-git clone https://github.com/Kanuiet/bedrock-whatsapp-bot/
+git clone https://github.com/Kanuiet/bedrock-whatsapp-bot/ # or you can just download the zip
 cd bedrock-whatsapp-bot
 
-# Install dependency
+# Install dependencies
 npm install
 
 # Start the bot
 node .
 ```
 
-## Lists WhatsApp Commands
+After starting, you will be prompted to enter your ip and port of your Minecraft server and the ingame bot name. A QRcode also appear for connecting WhatsApp.
 
+After the bot starts successfully, send `/forward` in a group chat (you can also do it in dm :) ) to forward Minecraft chat to the gc.
+
+
+
+Send `/help` to see the rest of the commands! Or just see below.
+
+
+## List of WhatsApp Commands
 ```
 /about - shows information about the bot
 /help <page> - provides list of commands
@@ -36,31 +36,4 @@ node .
 /status <ip> <port> - shows the current status for any minecraft bedrock server
 /list - shows the names of all currently-connected players in the minecraft server
 /send <message> - send your message to the minecraft server
-```
-
-## Config
-
-Example `config.json`:
-
-``` json
-{
-  "bedrockServer": { // The Minecraft bedrock server that bot connected to.
-      "ip": "example.com",
-      "port": 19132
-  },
-  "botName": "@", // The name of the bot.
-  "operators": [ // Allow the user use commands '/forward' and '/unforward'
-    {
-      "groupJid": "xxxx@g.us",
-      "userJid": "xxxx@s.whatsapp.net"
-    },
-    {
-      "groupJid": "xxxx@g.us",
-      "userJid": "xxxx@s.whatsapp.net"
-    }
-  ],
-  "groupIds": [ // Forward the minecraft server chat to these WhatsApp group
-    "xxxx@g.us"
-  ]
-}
 ```
