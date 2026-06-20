@@ -11,14 +11,15 @@
   ],
   "author": "Kanuiet",
   "license": "MIT",
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@11.8.0",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "^6.7.17",
-    "bedrock-protocol": "^3.45.0",
-    "chokidar": "^4.0.3",
-    "ping": "^0.4.4",
-    "pino": "^9.6.0",
+    "@whiskeysockets/baileys": "7.0.0-rc13",
+    "baileys": "7.0.0-rc13",
+    "bedrock-protocol": "^3.57.0",
+    "chokidar": "^5.0.0",
+    "ping": "^1.0.0",
+    "pino": "^10.3.1",
     "qrcode-terminal": "^0.12.0"
   }
 }
