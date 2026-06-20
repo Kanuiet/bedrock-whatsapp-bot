@@ -15,7 +15,6 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@whiskeysockets/baileys": "7.0.0-rc13",
-    "baileys": "7.0.0-rc13",
     "bedrock-protocol": "^3.57.0",
     "chokidar": "^5.0.0",
     "ping": "^1.0.0",
