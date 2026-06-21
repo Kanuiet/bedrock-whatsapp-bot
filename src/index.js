@@ -57,12 +57,12 @@ async function checkBotName() {
 
   while (true) {
     const nameInput = await getUserInput(
-      'Type your Minecraft bot name (Default: @): ',
+      'Type your Minecraft bot name (Default: Server): ',
     );
 
     // Default bot name
     if (nameInput.trim() === '') {
-      name = '@';
+      name = 'Server';
       break;
     }
 
