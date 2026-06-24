@@ -9,7 +9,7 @@ module.exports = {
     const totalPages = Math.ceil(commandsList.length / itemsPerPage);
 
     // if args is NaN
-    const int = Number.parseInt(args[0]) || 1;
+    const int = Number.parseInt(args[0], 10) || 1;
     // if args is 0 below
     let page = int < 1 ? 1 : int;
 

@@ -44,7 +44,7 @@ class Config {
   /**
    * Gets the value of the key from the config file.
    *
-   * @param {string} key 
+   * @param {string} key
    * @returns {*} The value of the key
    */
   get(key) {
@@ -62,8 +62,8 @@ class Config {
   /**
    * Appends a value to the array from the given key.
    *
-   * @param {string} key 
-   * @param {*} value 
+   * @param {string} key
+   * @param {*} value
    */
   append(key, value) {
     const keys = key.split('.');
@@ -88,8 +88,8 @@ class Config {
   /**
    * Sets a value for the given key.
    *
-   * @param {string} key 
-   * @param {*} value 
+   * @param {string} key
+   * @param {*} value
    */
   set(key, value) {
     const keys = key.split('.');
@@ -110,8 +110,8 @@ class Config {
   /**
    * Removes a value in the array from the given key.
    *
-   * @param {string} key 
-   * @param {*} value 
+   * @param {string} key
+   * @param {*} value
    */
   remove(key, value) {
     if (!Array.isArray(this.config[key])) return;
@@ -125,9 +125,9 @@ class Config {
   /**
    * Checks the value of the array if it exists for the given key.
    *
-   * @param {string} key 
-   * @param {*} value 
-   * @returns {boolean} `true` if the value exists, otherwise `false` 
+   * @param {string} key
+   * @param {*} value
+   * @returns {boolean} `true` if the value exists, otherwise `false`
    */
   hasValue(key, value) {
     if (!Array.isArray(this.config[key])) return false;
@@ -144,7 +144,7 @@ class Config {
 
   /**
    * Gets the path to the config file.
-   * 
+   *
    * @returns {string} The config file path
    */
   getPath() {

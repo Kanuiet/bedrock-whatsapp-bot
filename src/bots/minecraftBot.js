@@ -36,7 +36,7 @@ function startMinecraftBot() {
   });
 
   bedrockBot.on('join', () => {
-    log('Minecraft' ,'Minecraft bot connected!');
+    log('Minecraft', 'Minecraft bot connected!');
   });
 
   // Listen for minecraft server chat
@@ -50,7 +50,11 @@ function startMinecraftBot() {
   });
 
   bedrockBot.on('kick', (packet) => {
-    reconnect('Minecraft', `Kicked from the server: ${packet.message}`, startMinecraftBot);
+    reconnect(
+      'Minecraft',
+      `Kicked from the server: ${packet.message}`,
+      startMinecraftBot,
+    );
   });
 
   bedrockBot.on('close', () => {
@@ -58,7 +62,11 @@ function startMinecraftBot() {
   });
 
   bedrockBot.on('error', (error) => {
-    reconnect('Minecraft', `Connection error: ${error.message}`, startMinecraftBot);
+    reconnect(
+      'Minecraft',
+      `Connection error: ${error.message}`,
+      startMinecraftBot,
+    );
   });
 }
 

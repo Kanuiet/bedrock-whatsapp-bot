@@ -1,8 +1,8 @@
 /**
  * Logs output with colored text.
  *
- * @param {string} service 
- * @param {string} text 
+ * @param {string} service
+ * @param {string} text
  */
 function log(service, text) {
   switch (service) {
@@ -13,7 +13,7 @@ function log(service, text) {
       console.log(`[\x1b[32m${service}\x1b[0m] ${text}`);
       break;
     default:
-      console.log(`[${service}] ${text}`)
+      console.log(`[${service}] ${text}`);
   }
 }
 

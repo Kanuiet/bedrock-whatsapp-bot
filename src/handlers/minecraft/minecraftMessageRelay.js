@@ -20,7 +20,7 @@ function sendLog(text) {
  * Process Minecraft packet and send it to WhatsApp chat.
  *
  * @param {import('@whiskeysockets/baileys').WASocket} sock
- * @param {*} packet 
+ * @param {*} packet
  */
 async function processChat(sock, packet) {
   const groupIds = config.get('groupIds');

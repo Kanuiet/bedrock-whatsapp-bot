@@ -1,11 +1,11 @@
 /**
  * Formats an entity name (e.g., '%entity.zombie_villager_v2.name') to 'Zombie Villager'.
  *
- * @param {string} raw 
+ * @param {string} raw
  * @returns {string} A formatted entity name
  */
 function formatEntityName(raw) {
-  return raw 
+  return raw
     .replace('%entity.', '')
     .replace('_v2', '')
     .replace('.name', '')

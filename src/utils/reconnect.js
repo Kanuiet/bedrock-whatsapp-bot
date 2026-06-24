@@ -1,4 +1,4 @@
-const { log } = require("./log");
+const { log } = require('./log');
 
 const isReconnecting = {
   whatsapp: false,
@@ -17,8 +17,8 @@ async function tryReconnect(service, reconnectFunction) {
 /**
  * Reconnecting Minecraft or WhatsApp bot
  *
- * @param {string} service 
- * @param {string} reason 
+ * @param {string} service
+ * @param {string} reason
  * @param {botStartFunction} reconnectFunction - Either 'startWhatsAppBot' or 'startMinecraftBot'
  */
 function reconnect(service, reason, reconnectFunction) {

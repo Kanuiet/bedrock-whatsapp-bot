@@ -9,7 +9,7 @@ module.exports = {
   permission: 'member',
   async execute({ args, reply }) {
     let ip = args[0];
-    let port = args[1] ? Number.parseInt(args[1]) : 19132;
+    let port = args[1] ? Number.parseInt(args[1], 10) : 19132;
 
     if (!args.length) {
       ip = config.get('bedrockServer.ip');

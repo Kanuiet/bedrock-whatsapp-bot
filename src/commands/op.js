@@ -18,7 +18,7 @@ module.exports = {
 
     const groupMeta = await sock.groupMetadata(fromJid);
     const participants = groupMeta.participants;
-    const members = new Array();
+    const members = [];
 
     for (const participant of participants) {
       members.push(participant.id);

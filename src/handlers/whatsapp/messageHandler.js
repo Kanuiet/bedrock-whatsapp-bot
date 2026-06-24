@@ -28,7 +28,7 @@ async function handleMessage(
 ) {
   if (!message.startsWith('/')) return;
 
-  const reply = (text, mentionedJid = new Array()) => {
+  const reply = (text, mentionedJid = []) => {
     sock.sendMessage(fromJid, { text: text, mentions: mentionedJid });
   };
   const [cmdName, ...args] = message.slice(1).split(' ');

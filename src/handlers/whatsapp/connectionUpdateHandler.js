@@ -6,7 +6,7 @@ const { reconnect } = require('../../utils/reconnect.js');
 /**
  * Handles the connection close from WhatsApp.
  *
- * @param {*} lastDisconnect 
+ * @param {*} lastDisconnect
  */
 function handleConnectionClose(lastDisconnect) {
   const reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
@@ -78,7 +78,7 @@ function handleConnectionClose(lastDisconnect) {
 /**
  * Handles the connection update from WhatsApp.
  *
- * @param {*} update 
+ * @param {*} update
  */
 function handleConnectionUpdate(update) {
   const { connection, lastDisconnect, qr } = update;

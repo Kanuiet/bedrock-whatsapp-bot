@@ -2,7 +2,7 @@
  * Formats the Minecraft command 'list' and send it to WhatsApp chat.
  *
  * @param {import('@whiskeysockets/baileys').WASocket} sock
- * @param {string} from - remoteJid 
+ * @param {string} from - remoteJid
  * @param {*} packet
  */
 function processListCommand(sock, from, packet) {
@@ -23,4 +23,4 @@ function processListCommand(sock, from, packet) {
   sock.sendMessage(from, { text: header + list });
 }
 
-module.exports = { processListCommand }
+module.exports = { processListCommand };

@@ -6,7 +6,7 @@ module.exports = {
   usage: '/send <message>',
   permission: 'member',
   execute({ args, pushName, reply }) {
-    if (!args.length) { 
+    if (!args.length) {
       reply('You need to include a message. Usage: /send <message>');
       return;
     }
