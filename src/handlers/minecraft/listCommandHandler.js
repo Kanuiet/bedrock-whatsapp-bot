@@ -8,6 +8,8 @@
 function processListCommand(sock, from, packet) {
   // playerNums = [playersOnline, playersMax]
   // playerNames = ['Steve', 'Alex', ...]
+  if (packet.output[0].message_id !== 'commands.players.list') return;
+
   const playerNums = packet.output[0].parameters;
   const playerNames = packet.output[1].parameters[0].split(',');
 
