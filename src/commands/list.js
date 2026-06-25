@@ -16,10 +16,10 @@ module.exports = {
         type: 'player',
         uuid: '',
         request_id: '',
-        player_entity_id: undefined,
+        player_entity_id: [0, 0],
       },
       internal: false,
-      version: 86,
+      version: 'latest',
     });
   },
   getFrom,
