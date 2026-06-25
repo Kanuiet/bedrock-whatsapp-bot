@@ -18,7 +18,7 @@ function handleConnectionClose(lastDisconnect) {
         'WhatsApp',
         `Invalid session detected. Please delete the folder 'auth/' and scan the QR code again.`,
       );
-      return process.exit(1); // To remove warning from the biome lint.
+      return process.exit(1);
 
     case DisconnectReason.connectionLost:
       reconnect(
@@ -37,21 +37,21 @@ function handleConnectionClose(lastDisconnect) {
         'WhatsApp',
         'This session has been replaced by another connection. Please close the other session first.',
       );
-      return process.exit(1); // To remove warning from the biome lint.
+      return process.exit(1);
 
     case DisconnectReason.forbidden:
       log(
         'WhatsApp',
         `Access denied. Please delete the folder 'auth/' and scan the QR code again.`,
       );
-      return process.exit(1); // To remove warning from the biome lint.
+      return process.exit(1);
 
     case DisconnectReason.loggedOut:
       log(
         'WhatsApp',
         `You have been logged out. Please delete the folder 'auth/' and scan the QR code to log in again.`,
       );
-      return process.exit(1); // To remove warning from the biome lint.
+      return process.exit(1);
 
     case DisconnectReason.multideviceMismatch:
       reconnect(
@@ -70,8 +70,12 @@ function handleConnectionClose(lastDisconnect) {
       break;
 
     default:
-      log('WhatsApp', `Disconnected due to an unknown reason (${reason}).`);
-      return process.exit(1); // To remove warning from the biome lint.
+      reconnect(
+        'WhatsApp',
+        `Disconnected due to an unknown reason (${reason}).`,
+        startWhatsAppBot,
+      );
+      break;
   }
 }
 
