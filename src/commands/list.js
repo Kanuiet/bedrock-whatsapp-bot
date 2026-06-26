@@ -1,6 +1,4 @@
-const { getClient } = require('../bots/minecraftBot');
-
-let from;
+const { getPlayerList } = require('../bots/minecraftBot');
 
 module.exports = {
   name: 'list',
@@ -8,23 +6,13 @@ module.exports = {
     'shows the names of all currently-connected players in the minecraft server',
   usage: '/list',
   permission: 'member',
-  async execute({ fromJid }) {
-    from = fromJid;
-    getClient().queue('command_request', {
-      command: '/list',
-      origin: {
-        type: 'player',
-        uuid: '',
-        request_id: '',
-        player_entity_id: [0, 0],
-      },
-      internal: false,
-      version: 'latest',
-    });
+  async execute({ reply }) {
+    const player_list = getPlayerList();
+    const text =
+      `There are ${player_list.size} players online:\n` +
+      [...player_list.values()]
+        .map((name, i) => `\`\`\`${i + 1}. ${name.trim()}\`\`\``)
+        .join('\n');
+    reply(text);
   },
-  getFrom,
 };
-
-function getFrom() {
-  return from;
-}

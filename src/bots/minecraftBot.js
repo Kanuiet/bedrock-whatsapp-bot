@@ -1,16 +1,21 @@
 const {
   processChat,
-  processCommandListOutput,
 } = require('../handlers/minecraft/minecraftMessageRelay.js');
 const { reconnect } = require('../utils/reconnect.js');
 const { log } = require('../utils/log.js');
 const bedrock = require('bedrock-protocol');
 const config = require('../utils/config.js');
 
+const player_list = new Map();
+
 let bedrockBot;
 
 function getClient() {
   return bedrockBot;
+}
+
+function getPlayerList() {
+  return player_list;
 }
 
 function sendMessage(name, message) {
@@ -32,7 +37,6 @@ function sendMessage(name, message) {
  */
 function startMinecraftBot() {
   const { getWASocket } = require('../bots/whatsappBot.js');
-  const { getFrom } = require('../commands/list.js');
   const ip = config.get('bedrockServer.ip');
   const port = config.get('bedrockServer.port');
   const botName = config.get('botName');
@@ -59,8 +63,20 @@ function startMinecraftBot() {
   });
 
   // Listen for bot's command output
-  bedrockBot.on('command_output', (packet) => {
-    processCommandListOutput(getWASocket(), getFrom(), packet);
+  // bedrockBot.on('command_output', (packet) => {
+  // });
+
+  bedrockBot.on('player_list', (packet) => {
+    const action = packet.records.type;
+    if (action === 'add') {
+      for (const player of packet.records.records) {
+        player_list.set(player.uuid, player.username);
+      }
+    } else if (action === 'remove') {
+      for (const player of packet.records.records) {
+        player_list.delete(player.uuid);
+      }
+    }
   });
 
   bedrockBot.on('kick', (packet) => {
@@ -88,4 +104,5 @@ module.exports = {
   startMinecraftBot,
   getClient,
   sendMessage,
+  getPlayerList,
 };

@@ -1,5 +1,4 @@
 const { formatChatPacket, formatEventPacket } = require('./formatPacket.js');
-const { processListCommand } = require('./listCommandHandler.js');
 const { log } = require('../../utils/log.js');
 const config = require('../../utils/config.js');
 
@@ -47,5 +46,4 @@ async function processChat(sock, packet) {
 
 module.exports = {
   processChat,
-  processCommandListOutput: processListCommand,
 };
