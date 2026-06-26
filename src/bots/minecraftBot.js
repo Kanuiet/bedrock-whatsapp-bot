@@ -18,20 +18,6 @@ function getPlayerList() {
   return player_list;
 }
 
-function sendMessage(name, message) {
-  getClient().queue('command_request', {
-    command: `/tellraw @a {"rawtext":[{"text":"<§a${name}§r> ${message}"}]}`,
-    origin: {
-      type: 'player',
-      uuid: '',
-      request_id: '',
-      player_entity_id: [0, 0],
-    },
-    internal: false,
-    version: 'latest',
-  });
-}
-
 /**
  * Starts the Minecraft bot.
  */
@@ -103,6 +89,5 @@ function startMinecraftBot() {
 module.exports = {
   startMinecraftBot,
   getClient,
-  sendMessage,
   getPlayerList,
 };

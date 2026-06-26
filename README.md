@@ -35,4 +35,5 @@ Send `/help` to see the rest of the commands! Or just see below.
 /unforward - stop forwarding minecraft chat messages to this group chat
 /status <ip> <port> - shows the current status for any minecraft bedrock server
 /list - shows the names of all currently-connected players in the minecraft server
+/say - send your message to the minecraft server
 ```

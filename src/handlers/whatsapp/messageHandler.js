@@ -1,20 +1,11 @@
 const commands = require('../../utils/commandLoader.js');
 const config = require('../../utils/config.js');
-const { sendMessage } = require('../../bots/minecraftBot.js');
 
 function isOperator(fromJid, userJid, fromMe) {
   return (
     config.hasValue('operators', { groupJid: fromJid, userJid: userJid }) ||
     fromMe
   );
-}
-
-function sendToMinecraft(from, pushName, message) {
-  const groupIds = config.get('groupIds');
-
-  if (groupIds?.includes(from)) {
-    sendMessage(pushName, message);
-  }
 }
 
 /**
@@ -35,12 +26,7 @@ async function handleMessage(
   userJid,
   pushName,
 ) {
-  if (!message.startsWith('/')) {
-    if (!fromMe) {
-      sendToMinecraft(fromJid, pushName, message);
-    }
-    return;
-  }
+  if (!message.startsWith('/')) return;
 
   const reply = (text, mentionedJid = []) => {
     sock.sendMessage(fromJid, { text: text, mentions: mentionedJid });
