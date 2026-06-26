@@ -28,6 +28,11 @@ async function handleMessage(
 ) {
   if (!message.startsWith('/')) return;
 
+  const groupIds = config.get('groupIds');
+  if (!groupIds?.includes(fromJid) && !fromMe) {
+    return;
+  }
+
   const reply = (text, mentionedJid = []) => {
     sock.sendMessage(fromJid, { text: text, mentions: mentionedJid });
   };
