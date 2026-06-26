@@ -2,11 +2,14 @@
 A simple Node.js program to bridge WhatsApp and Minecraft Bedrock server chat.
 
 ## Installation
-You must have [Node.js](https://nodejs.org/en/download) installed and set `online-mode` to `false` in the `server.properties`
+You must have [Node.js](https://nodejs.org/en/download) installed
 
 ``` shell
 # Clone the repository
-git clone https://github.com/Kanuiet/bedrock-whatsapp-bot/ # or you can just download the zip
+git clone https://github.com/Kanuiet/bedrock-whatsapp-bot/
+```
+or you can just download [this](https://github.com/Kanuiet/bedrock-whatsapp-bot/archive/refs/heads/main.zip)
+```
 cd bedrock-whatsapp-bot
 
 # Install dependencies
@@ -16,14 +19,12 @@ npm install
 node .
 ```
 
-After starting, you will be prompted to enter your ip and port of your Minecraft server and the ingame bot name. A QRcode also appear for connecting WhatsApp.
+After starting, you can follow the setup wizard. A QR code also appear for connecting WhatsApp.
 
-After the bot starts successfully, send `/forward` in a group chat (you can also do it in dm :) ) to forward Minecraft chat to the gc.
+After the bot starts successfully, send `/forward` in a group chat to forward Minecraft chat to the WhatsApp group chat.
 
-
-
-Send `/help` to see the rest of the commands! Or just see below.
-
+## Important
+You need to grant the bot Operator status so the bot is able to broadcast the WhatsApp message (for `/say` command)
 
 ## List of WhatsApp Commands
 ```

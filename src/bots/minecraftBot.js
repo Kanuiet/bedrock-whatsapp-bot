@@ -34,8 +34,9 @@ function startMinecraftBot() {
   bedrockBot = bedrock.createClient({
     host: ip,
     port: port,
-    username: botName || '@',
-    offline: true,
+    username: botName || 'Server',
+    profilesFolder: 'auth_mc',
+    offline: config.get('offlineMode'),
     skipPing: true,
   });
 

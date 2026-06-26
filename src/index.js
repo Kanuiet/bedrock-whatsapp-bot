@@ -31,12 +31,12 @@ async function checkIpPort() {
   }
 
   while (true) {
-    const portInput = await getUserInput(
-      'Type your Minecraft server port (Default: 19132): ',
-    );
+    const portInput = (
+      await getUserInput('Type your Minecraft server port (Default: 19132): ')
+    ).trim();
 
     // Default port
-    if (portInput.trim() === '') {
+    if (portInput === '') {
       port = 19132;
       break;
     }
@@ -50,6 +50,33 @@ async function checkIpPort() {
 
   config.set('bedrockServer.ip', ip);
   config.set('bedrockServer.port', port);
+}
+
+async function checkAuthType() {
+  let offline;
+
+  while (true) {
+    const confirm = (
+      await getUserInput(
+        'Enable online mode? (Need Microsoft account) (Default: yes): ',
+      )
+    )
+      .trim()
+      .toLowerCase();
+
+    if (confirm === '' || confirm === 'y' || confirm === 'yes') {
+      offline = false;
+      break;
+    } else if (confirm === 'n' || confirm === 'no') {
+      console.log(
+        'You will need to make the bot Op (for `/say`) and set gamemode spectator (To make the bot invinsible) everytime the bot join',
+      );
+      offline = true;
+      break;
+    }
+  }
+
+  config.set('offlineMode', offline);
 }
 
 async function checkBotName() {
@@ -84,7 +111,11 @@ async function init() {
     await checkIpPort();
   }
 
-  if (config.get('botName') === null) {
+  if (config.get('offlineMode') === null) {
+    await checkAuthType();
+  }
+
+  if (config.get('offlineMode') && config.get('botName') === null) {
     await checkBotName();
   }
 }

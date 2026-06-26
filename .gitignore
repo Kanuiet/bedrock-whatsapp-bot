@@ -1,4 +1,5 @@
 .git
 config.json
 auth/
+auth_mc/
 node_modules/
